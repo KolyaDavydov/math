@@ -1,3 +1,6 @@
+#ifndef SRC_S21_MATH_H_
+#define SRC_S21_MATH_H_
+
 // HEADER TO s21_math.c
 
 // - Библиотека должна быть разработана на языке Си стандарта C11 с
@@ -47,30 +50,37 @@
 
 // - Проверяемая точность дробной части - максимум 6 знаков после запятой.
 
-#include <math.h>  // для проверки
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#define s21_NAN (0.0 / 0.0)
+#define s21_INF (1.0 / 0.0)
+
+#define s21_E 2.71828182845904523536
+
 // |Функции Маркуса|
-long double acos(double x);
-long double asin(double x);
-long double atan(double x);
-long double cos(double x);
-long double sin(double x);
-long double tan(double x);
+long double s21_acos(double x);
+long double s21_asin(double x);
+long double s21_atan(double x);
+long double s21_cos(double x);
+long double s21_sin(double x);
+long double s21_tan(double x);
 
 // |Функции Никиты|
-long double ceil(double x);
-int abs(int x);
-long double exp(double x);
+long double s21_ceil(double x);
+int s21_abs(int x);
+long double s21_exp(double x);
+int s21_isnan(double x);
 
 // |Функции Коляна|
-long double fabs(double x);
-long double floor(double x);
-long double fmod(double x, double y);
+long double s21_fabs(double x);
+long double s21_floor(double x);
+long double s21_fmod(double x, double y);
 
 // |Функции Макса|
-long double log(double x);
-long double pow(double base, double exp);
-long double sqrt(double x);
+long double s21_log(double x);
+long double s21_pow(double base, double exp);
+long double s21_sqrt(double x);
+
+#endif  // SRC_S21_MATH_H_

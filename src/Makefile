@@ -19,7 +19,7 @@ s21_math.a: $(LIBOBJECTS)
 	ar -crs s21_decimal.a $(LIBOBJECTS)
 	rm -f *.o
 
-test: tests.c s21_math.a
+test: clean tests.c s21_math.a
 	$(CC) $(CFLAGS) tests.c $(LIBSOURCES) -o run $(CHECKFLAGS) -lgcov --coverage
 	./run
 
