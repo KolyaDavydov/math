@@ -53,9 +53,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
+#include <stdint.h>
 
 #define s21_NAN (0.0 / 0.0)
 #define s21_INF (1.0 / 0.0)
+#define s21_NEGINF (-1.0 / 0.0)
 
 #define s21_E 2.71828182845904523536
 

@@ -41,3 +41,61 @@ long double s21_exp(double x) {
 }
 
 int s21_isnan(double x) { return x != x; }
+
+/**
+ * @brief модуль числа типа double
+ *
+ * @param x число модуль которого необходимо найти
+ *
+ * @returns модиль числа double
+ */
+long double s21_fabs(double x) {
+  if (x < 0.0) x = -x;
+  return x;
+}
+
+/**
+ * @brief округление вниз
+ *
+ * @param x число которое нужно округлить
+ *
+ * @returns число после округления
+ */
+long double s21_floor(double x) {
+  long double result;
+  if (x >= LLONG_MAX || x <= LLONG_MIN || x != x) {
+    result = x;
+  } else {
+    result = (int64_t)x;
+    if (x < 0) {
+      if ((int64_t)x != x) result = (int64_t)(x - 1);
+    }
+  }
+  return result;
+}
+
+/**
+ * @brief остаток операции деления с плавающей точкой
+ *
+ * @param x делимое
+ * 
+ * @param y делитель
+ *
+ * @returns остаток от деления
+ */
+long double s21_fmod(double x, double y) {
+  long double result;
+  
+  if (y == 0.0) {
+    result = s21_NAN;
+  } else if (y == s21_INF || y == s21_NEGINF) {
+    result = x;
+  } else {
+    if (x / y < 0) {
+      result = x - s21_ceil(x / y) * y;
+    } else {
+      result = x - s21_floor(x / y) * y;
+    }
+  }
+  return result;
+}
