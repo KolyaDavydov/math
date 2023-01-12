@@ -29,4 +29,6 @@ long double s21_log(double x);
 long double s21_pow(double base, double exp);
 long double s21_sqrt(double x);
 
+// |Доп Функции при необходимости|
+
 #endif  // SRC_S21_MATH_H_
