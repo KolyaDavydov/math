@@ -94,10 +94,10 @@ END_TEST
 // <=== TEST CASES: s21_exp ===>
 
 START_TEST(tc_exp_1) {
-  int test_value = 1;
-  int result = s21_exp(test_value), expecting = exp(test_value);
+  double test_value = 1;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
 
-  ck_assert_int_eq(expecting, result);
+  ck_assert_double_eq(expecting, result);
 }
 END_TEST
 
@@ -129,29 +129,61 @@ START_TEST(tc_exp_4) {
 END_TEST
 
 START_TEST(tc_exp_5) {
-  int test_value = 1.1223;
-  int result = s21_exp(test_value), expecting = exp(test_value);
+  double test_value = 1.1223;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
 
-  ck_assert_int_eq(expecting, result);
+  ck_assert_double_eq(expecting, result);
 }
 END_TEST
 
 START_TEST(tc_exp_6) {
-  int test_value = -34.57886;
-  int result = s21_exp(test_value), expecting = exp(test_value);
+  double test_value = -34.57886;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
 
-  ck_assert_int_eq(expecting, result);
+  ck_assert_double_eq(expecting, result);
+}
+END_TEST
+
+START_TEST(tc_exp_7) {
+  double test_value = -123456789.97531;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
+
+  ck_assert_double_eq(expecting, result);
+}
+END_TEST
+
+START_TEST(tc_exp_8) {
+  double test_value = 709.8;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
+
+  ck_assert_double_eq(expecting, result);
+}
+END_TEST
+
+START_TEST(tc_exp_9) {
+  double test_value = 7093562174.8454;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
+
+  ck_assert_double_eq(expecting, result);
+}
+END_TEST
+
+START_TEST(tc_exp_10) {
+  double test_value = 0.0;
+  long double result = s21_exp(test_value), expecting = exp(test_value);
+
+  ck_assert_double_eq(expecting, result);
 }
 END_TEST
 
 // <=== TEST CASES: s21_fabs ===>
 
 START_TEST(tc_fabs) {
-    ck_assert_ldouble_eq(s21_fabs(50.0), fabs(50.0));
-    ck_assert_ldouble_eq(s21_fabs(-40.0), fabs(-40.0));
-    ck_assert_ldouble_eq(s21_fabs(-612367.54783), fabs(-612367.54783));
-    ck_assert_ldouble_eq(s21_fabs(0.0), fabs(0.0));
-    ck_assert_float_eq(s21_fabs(s21_INF), fabs(s21_INF));
+  ck_assert_ldouble_eq(s21_fabs(50.0), fabs(50.0));
+  ck_assert_ldouble_eq(s21_fabs(-40.0), fabs(-40.0));
+  ck_assert_ldouble_eq(s21_fabs(-612367.54783), fabs(-612367.54783));
+  ck_assert_ldouble_eq(s21_fabs(0.0), fabs(0.0));
+  ck_assert_float_eq(s21_fabs(s21_INF), fabs(s21_INF));
 }
 END_TEST
 
@@ -230,17 +262,17 @@ START_TEST(tc_fmod) {
   x = -1.0;
   y = 0.0;
   ck_assert_ldouble_nan(s21_fmod(x, y));
-  x = 1.0/0.0;
+  x = 1.0 / 0.0;
   y = 0.0;
   ck_assert_ldouble_nan(s21_fmod(x, y));
   x = 0.0;
-  y = 1.0/0.0;
+  y = 1.0 / 0.0;
   ck_assert_ldouble_eq_tol(s21_fmod(x, y), fmod(x, y), 1e-6);
-  x = -1.0/0.0;
+  x = -1.0 / 0.0;
   y = 0.0;
   ck_assert_ldouble_nan(s21_fmod(x, y));
   x = 0.0;
-  y = -1.0/0.0;
+  y = -1.0 / 0.0;
   ck_assert_ldouble_eq_tol(s21_fmod(x, y), fmod(x, y), 1e-6);
 }
 END_TEST
@@ -285,6 +317,10 @@ Suite *ts_exp() {
   tcase_add_test(test_case, tc_exp_4);
   tcase_add_test(test_case, tc_exp_5);
   tcase_add_test(test_case, tc_exp_6);
+  tcase_add_test(test_case, tc_exp_7);
+  tcase_add_test(test_case, tc_exp_8);
+  tcase_add_test(test_case, tc_exp_9);
+  tcase_add_test(test_case, tc_exp_10);
 
   suite_add_tcase(suite, test_case);
 
@@ -330,13 +366,8 @@ Suite *ts_fmod() {
 }
 
 int main(void) {
-  Suite *test_suites[] = {ts_ceil(),
-                          ts_abs(),
-                          ts_exp(),
-                          ts_fabs(),
-                          ts_floor(),
-                          ts_fmod(),
-                          NULL};
+  Suite *test_suites[] = {ts_ceil(),  ts_abs(),  ts_exp(), ts_fabs(),
+                          ts_floor(), ts_fmod(), NULL};
   int failed = 0;
 
   for (Suite **s = test_suites; *s != NULL; s++) {

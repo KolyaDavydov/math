@@ -1,5 +1,12 @@
 #include "s21_math.h"
 
+/**
+ * @brief округление вверх
+ *
+ * @param x число которое нужно округлить
+ *
+ * @returns число после округления
+ */
 long double s21_ceil(double x) {
   long double result;
 
@@ -14,32 +21,57 @@ long double s21_ceil(double x) {
   return result;
 }
 
+/**
+ * @brief модуль целого числа
+ *
+ * @param x число модуль которого необходимо найти
+ *
+ * @returns модуль числа
+ */
 int s21_abs(int x) { return x < 0 ? -x : x; }
 
-/*
-  Currently this implementation will timeout.
-  fabs function needed to write proper implementation
-*/
+/**
+ * @brief Возводит константу E в степень x
+ *
+ * @param x степень числа E
+ *
+ * @returns inf | nan | e | полученный результат
+ */
 long double s21_exp(double x) {
-  long double result = 0.0f;
+  long double result = 1.0f;
 
-  if (s21_isnan(x) || x == s21_INF || x == 0) {
+  if (s21_isnan(x) || x == s21_INF) {
     result = x;
   } else if (x < 0) {
     result = 1 / s21_exp(-x);
+  } else if (x == 0.0f) {
+    result = 1.0f;
+  } else if (x == 1.0f) {
+    result = s21_E;
+  } else if (x >= 709.8) {
+    result = s21_INF;
   } else {
-    long double x1 = 1.0f, precision = 0.000001;
+    long double step = result, precision = 1e-16, fact = 1.0f, pow = 1.0f;
     int n = 0;
 
     do {
-      result += x1;
-      x1 *= (x / ++n);
-    } while (x1 > precision);
+      step = result;
+      fact *= ++n;
+      pow *= x;
+      result += pow / fact;
+    } while (s21_fabs(step - result) > precision);
   }
 
   return result;
 }
 
+/**
+ * @brief проверка числа на NAN
+ *
+ * @param x проверяемое число
+ *
+ * @returns 1 или 0
+ */
 int s21_isnan(double x) { return x != x; }
 
 /**
@@ -78,14 +110,14 @@ long double s21_floor(double x) {
  * @brief остаток операции деления с плавающей точкой
  *
  * @param x делимое
- * 
+ *
  * @param y делитель
  *
  * @returns остаток от деления
  */
 long double s21_fmod(double x, double y) {
   long double result;
-  
+
   if (y == 0.0) {
     result = s21_NAN;
   } else if (y == s21_INF || y == s21_NEGINF) {

@@ -16,7 +16,7 @@ endif
 all: gcov_report
 
 s21_math.a: $(LIBOBJECTS)
-	ar -crs s21_decimal.a $(LIBOBJECTS)
+	ar -crs s21_math.a $(LIBOBJECTS)
 	rm -f *.o
 
 test: clean tests.c s21_math.a
@@ -31,6 +31,9 @@ gcov_report: test
 valgrind:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBSOURCES) test_valgrind.c -o vtests_run
 	sh valgrind.sh ./vtests_run
+
+docker_test:
+	sh ./run.sh
 
 rebuild: clean all
 
