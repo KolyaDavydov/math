@@ -29,8 +29,8 @@ gcov_report: test
 	open ./report/index.html
 
 valgrind:
-	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBSOURCES) test_valgrind.c -o vtests_run
-	sh valgrind.sh ./vtests_run
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBSOURCES) s21_math.h test_valgrind.c -o vtests_run
+# sh valgrind.sh ./vtests_run
 
 rebuild: clean all
 

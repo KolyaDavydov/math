@@ -5,10 +5,14 @@
 
 // <=== TEST CASES: s21_abs ===>
 
-void tc_abs_1() {}
+void tc_log_1() {
+  long double x = 1.1f;
+  long double res = s21_pow(x, -3);
+  printf("%Lf", res);
+}
 
 int main(void) {
-  tc_abs_1();
+  tc_log_1();
 
   return 0;
 }

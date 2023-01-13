@@ -1,10 +1,18 @@
 #ifndef SRC_S21_MATH_H_
 #define SRC_S21_MATH_H_
 
+#include <limits.h>
 #include <math.h>  // для проверки
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define s21_NAN (0.0 / 0.0)
+#define s21_INF (1.0 / 0.0)
+#define s21_NEGINF (-1.0 / 0.0)
+
+#define s21_E 2.71828182845904523536
 
 // |Функции Маркуса|
 long double s21_acos(double x);
@@ -30,5 +38,8 @@ long double s21_pow(double base, double exp);
 long double s21_sqrt(double x);
 
 // |Доп Функции при необходимости|
+
+int s21_isnan(double x);
+long double s21_fabs(double x);
 
 #endif  // SRC_S21_MATH_H_
