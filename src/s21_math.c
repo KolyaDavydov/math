@@ -34,6 +34,11 @@ long double s21_pow(double base, double exp) {
 }
 
 long double s21_sqrt(double x) {
-  long double result = s21_pow(x, 0.5);
+  long double result = 0.0f;
+  if (x < 0) {
+    result = s21_NAN;
+  } else {
+    result = s21_pow(x, 0.5);
+  }
   return result;
 }
