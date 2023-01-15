@@ -6,7 +6,8 @@
 void tc_sin() {
   s21_sin(100);
   s21_sin(-100);
-  s21_sin(INFINITY) s21_sin(NAN);
+  s21_sin(INFINITY);
+  s21_sin(NAN);
   s21_sin(0);
   s21_sin(PI / 6);
   s21_sin(PI / 4);
@@ -27,7 +28,8 @@ void tc_sin() {
 void tc_cos() {
   s21_cos(100);
   s21_cos(-100);
-  s21_cos(INFINITY) s21_cos(NAN);
+  s21_cos(INFINITY);
+  s21_cos(NAN);
   s21_cos(0);
   s21_cos(PI / 6);
   s21_cos(PI / 4);
@@ -48,7 +50,8 @@ void tc_cos() {
 void tc_tan() {
   s21_tan(100);
   s21_tan(-100);
-  s21_tan(INFINITY) s21_tan(NAN);
+  s21_tan(INFINITY);
+  s21_tan(NAN);
   s21_tan(0);
   s21_tan(PI / 6);
   s21_tan(PI / 4);
@@ -69,7 +72,8 @@ void tc_tan() {
 void tc_asin() {
   s21_asin(100);
   s21_asin(-100);
-  s21_asin(INFINITY) s21_asin(NAN);
+  s21_asin(INFINITY);
+  s21_asin(NAN);
   s21_asin(0);
   s21_asin(PI / 6);
   s21_asin(PI / 4);
@@ -90,7 +94,8 @@ void tc_asin() {
 void tc_acos() {
   s21_acos(100);
   s21_acos(-100);
-  s21_acos(INFINITY) s21_acos(NAN);
+  s21_acos(INFINITY);
+  s21_acos(NAN);
   s21_acos(0);
   s21_acos(PI / 6);
   s21_acos(PI / 4);
@@ -111,7 +116,8 @@ void tc_acos() {
 void tc_atan() {
   s21_atan(100);
   s21_atan(-100);
-  s21_atan(INFINITY) s21_atan(NAN);
+  s21_atan(INFINITY);
+  s21_atan(NAN);
   s21_atan(0);
   s21_atan(PI / 6);
   s21_atan(PI / 4);

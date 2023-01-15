@@ -237,7 +237,7 @@
 // printf("-9PI/2:%lf | %Lf\n", atan(-9*PI/2), s21_atan(-9*PI/2));
 // printf("-12PI/2:%lf | %Lf\n", atan(-12*PI/2), s21_atan(-12*PI/2));
 // printf("-2PI:%lf | %Lf\n", atan(-2*PI), s21_atan(-2*PI));
-//}
+// }
 
 long double s21_sin(double x) {
   double e = 0.0000001;  // заданная точность
