@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "__locale": "c",
-        "functional": "c"
+        "functional": "c",
+        "complex": "c",
+        "cmath": "c",
+        "algorithm": "c",
+        "random": "c"
     }
 }

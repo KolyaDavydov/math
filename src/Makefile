@@ -30,7 +30,7 @@ gcov_report: test
 
 valgrind:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBSOURCES) s21_math.h test_valgrind.c -o vtests_run
-# sh valgrind.sh ./vtests_run
+	sh valgrind.sh ./vtests_run
 
 rebuild: clean all
 
