@@ -16,10 +16,10 @@ endif
 all: gcov_report
 
 s21_math.a: $(LIBOBJECTS)
-	ar -crs s21_decimal.a $(LIBOBJECTS)
+	ar -crs s21_math.a $(LIBOBJECTS)
 	rm -f *.o
 
-test: tests.c s21_math.a
+test: clean tests.c s21_math.a
 	$(CC) $(CFLAGS) tests.c $(LIBSOURCES) -o run $(CHECKFLAGS) -lgcov --coverage
 	./run
 
@@ -31,6 +31,9 @@ gcov_report: test
 valgrind:
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBSOURCES) s21_math.h test_valgrind.c -o vtests_run
 	sh valgrind.sh ./vtests_run
+
+docker_test:
+	sh ./run.sh
 
 rebuild: clean all
 
